@@ -4,9 +4,9 @@
     <div>
       <input v-model="searchtext" placeholder="Input Here.">
       <br>
-      <input type="checkbox" id="peoplecheck" value="peoplecheck" v-model="checkedNames" true-value="yes" false-value="no">
+      <input type="checkbox" id="peoplecheck" value="peoplecheck" v-model="peoplecheck">
       <label for="peoplecheck">people</label>
-      <input type="checkbox" id="publicationcheck" value="publicationcheck" v-model="checkedNames" true-value="yes" false-value="no">
+      <input type="checkbox" id="publicationcheck" value="publicationcheck" v-model="publicationcheck">
       <label for="publicationcheck">publication</label>
     </div>
     <div>
@@ -14,12 +14,7 @@
         Search
       </button>
     </div>
-    <div>
-      <br>
-      <br>
-      <p>Message is: {{ searchtext }}</p>
-      <span>Checked names: {{ checkedNames }}</span>
-    </div>
+
   </div>
 </template>
 
@@ -28,13 +23,20 @@ export default {
   name: 'Search',
   methods: {
     sendForm: function () {
-      alert(this.searchtext + '\n' + this.checkedNames)
+      if (this.peoplecheck === true && this.publicationcheck === false) {
+        this.searchrange = 'people'
+      } else if (this.peoplecheck === false && this.publicationcheck === true) {
+        this.searchrange = 'publication'
+      }
+      this.$router.push({ name: 'Result', query: { searchtext: this.searchtext, searchrange: this.searchrange } })
     }
   },
   data () {
     return {
       searchtext: '',
-      checkedNames: []
+      peoplecheck: false,
+      publicationcheck: false,
+      searchrange: ''
     }
   }
 }
