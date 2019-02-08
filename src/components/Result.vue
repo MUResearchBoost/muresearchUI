@@ -23,17 +23,31 @@ import axios from 'axios'
 export default {
   name: 'Result',
   mounted () {
-    if (this.$route.query.searchrange === '') {
+    this.getResults()
+  },
+  methods: {
+    getResults: function () {
+      if (this.$route.query.searchrange === '') {
+        this.getAllResults()
+      } else if (this.$route.query.searchrange === 'people') {
+        this.getPeopleResults()
+      } else {
+        this.getPublicationResults()
+      }
+    },
+    getAllResults: function () {
       this.url = 'http://35.247.68.0:8080/api/test/search/0/' + this.$route.query.searchtext
       axios.get(this.url).then(
         response => {
-          this.peoplelist = response.data.data.people
-          this.publicationlist = response.data.data.publication
+          // this.peoplelist = response.data.data.people
+          // this.publicationlist = response.data.data.publication
+          console.log(response)
         }
       ).catch(error => {
         console.log(error)
       })
-    } else if (this.$route.query.searchrange === 'people') {
+    },
+    getPeopleResults: function () {
       this.url = 'http://35.247.68.0:8080/api/test/search/people/0/' + this.$route.query.searchtext
       axios.get(this.url).then(
         response => {
@@ -42,7 +56,8 @@ export default {
       ).catch(error => {
         console.log(error)
       })
-    } else {
+    },
+    getPublicationResults: function () {
       this.url = 'http://35.247.68.0:8080/api/test/search/publication/0/' + this.$route.query.searchtext
       axios.get(this.url).then(
         response => {
@@ -63,7 +78,7 @@ export default {
         'email': '',
         'firstname': '',
         'fullname': '',
-        'id': '',
+        'id': '123',
         'imageLargeUrl': '',
         'imageMediumUrl': '',
         'imageSmailUrl': '',
@@ -86,40 +101,37 @@ export default {
           'WIKI': '',
           'IEEE': ''
         },
-        'mainTitle': 'Main Title',
-        'subTitle': 'Sub Title',
-        'abstractContent': 'Abstract Content',
-        'content': 'Some Content',
+        'mainTitle': 'Main',
+        'subTitle': '',
+        'abstractContent': 'Abstract',
+        'content': '',
         'contentFileIds': [
           ''
         ],
         'references': [
-          'A Reference',
-          'Other'
+          '',
+          ''
         ],
-        'originUrl': 'https://www.google.com',
+        'originUrl': '',
         'citation': [
-          'A Citation',
-          'Other'
+          ''
         ],
         'collections': [
-          'A Collection',
-          'Other'
+          ''
         ],
         'authorsIds': [
-          '1'
+          '10'
         ],
         'publishDate': '',
         'submitDate': '',
         'publisher': [
-          'A Publisher',
-          'Other'
+          ''
         ],
         'subjectIds': [
           ''
         ],
-        'language': 'English',
-        'publicationType': 'PublicationType'
+        'language': '',
+        'publicationType': ''
       }
       ]
 
