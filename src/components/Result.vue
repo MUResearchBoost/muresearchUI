@@ -2,7 +2,7 @@
   <div>
     Result
     <div>
-      <li v-for="people in peoplelist" :key="people"><span>Name : </span>{{people.id}}</li>
+      <li v-for="people in peoplelist" :key="people"><span>Name : </span><button v-on:click="jumpToPeople(people.id)">{{people.fullname}}</button></li>
 
     </div>
     <div>
@@ -10,7 +10,7 @@
     </div>
     <div>
       <li v-for="publication in publicationlist" :key="publication">
-      <p>{{publication.mainTitle}}</p>
+        <p><button v-on:click="jumpToPublication(publication.id)">{{publication.mainTitle}}</button></p>
       <p><span>Authors : </span><span v-for="author in publication.authorsIds" :key="author">{{author}}, </span></p>
       <p><span>Abstract : </span>{{publication.abstractContent}}</p>
       </li>
@@ -66,6 +66,12 @@ export default {
       ).catch(error => {
         console.log(error)
       })
+    },
+    jumpToPeople: function (ID) {
+      this.$router.push({ name: 'People', query: { userID: ID } })
+    },
+    jumpToPublication: function (ID) {
+      this.$router.push({ name: 'Publication', query: { publicationID: ID } })
     }
   },
   data () {
@@ -78,7 +84,7 @@ export default {
         'email': '',
         'firstname': '',
         'fullname': '',
-        'id': '123',
+        'id': '670',
         'imageLargeUrl': '',
         'imageMediumUrl': '',
         'imageSmailUrl': '',
