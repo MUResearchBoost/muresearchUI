@@ -33,7 +33,7 @@ export default {
     }
   },
   mounted () {
-    axios.get('http://35.247.68.0:8080/api/test/publication/default')
+    axios.get('http://35.247.68.0:8080/api/test/publication/' + this.$route.query.publicationID)
       .then((response) => {
       // handle success
         console.log(response.data)

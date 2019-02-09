@@ -39,8 +39,8 @@ export default {
       this.url = 'http://35.247.68.0:8080/api/test/search/0/' + this.$route.query.searchtext
       axios.get(this.url).then(
         response => {
-          // this.peoplelist = response.data.data.people
-          // this.publicationlist = response.data.data.publication
+          this.peoplelist = response.data.data.people
+          this.publicationlist = response.data.data.publication
           console.log(response)
         }
       ).catch(error => {
@@ -68,7 +68,8 @@ export default {
       })
     },
     jumpToPeople: function (ID) {
-      this.$router.push({ name: 'People', query: { userID: ID } })
+      alert(ID)
+      this.$router.push({ name: 'People', query: { peopleID: ID } })
     },
     jumpToPublication: function (ID) {
       this.$router.push({ name: 'Publication', query: { publicationID: ID } })
@@ -83,8 +84,8 @@ export default {
         ],
         'email': '',
         'firstname': '',
-        'fullname': '',
-        'id': '670',
+        'fullname': 'full',
+        'id': '',
         'imageLargeUrl': '',
         'imageMediumUrl': '',
         'imageSmailUrl': '',

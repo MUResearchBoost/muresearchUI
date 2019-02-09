@@ -25,6 +25,20 @@ export default {
     }
   },
   mounted () {
+    axios.get('http://35.247.68.0:8080/api/test/people/' + this.$route.query.peopleID)
+      .then((response) => {
+      // handle success
+        console.log(response.data)
+        this.sth2 = response.data
+      })
+      .catch(function (error) {
+      // handle error
+        console.log(error)
+      })
+      .then(function () {
+      // always executed
+      })
+    /*
     axios.post('http://35.247.68.0:8080/api/test/people/', {
       'id': '377',
       'email': 'jnqh4@mail.missouri.edu',
@@ -48,6 +62,7 @@ export default {
       .catch(function (error) {
         console.log(error)
       })
+      */
   }
 }
 </script>
