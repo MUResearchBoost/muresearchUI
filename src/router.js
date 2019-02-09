@@ -5,10 +5,17 @@ import Search from '@/components/Search'
 import Result from '@/components/Result'
 import People from '@/components/People'
 import Publication from '@/components/Publication'
+import About from '@/components/About'
+
 Vue.use(Router)
 
 export default new Router({
   routes: [
+    {
+      path: '/About',
+      name: 'About',
+      component: About
+    },
     {
       path: '/HelloWorld',
       name: 'HelloWorld',
