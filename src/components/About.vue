@@ -10,16 +10,14 @@
       content:&emsp;{{ sth.content }}<br>
       references:&emsp;{{ sth.references }}<br>
       originUrl:&emsp;{{ sth.originUrl }}<br>
-      {{ sth.citation }}<br>
-      {{ sth.collections }}<br>
-      {{ sth.publishDate }}<br>
-      {{ sth.submitDate }}<br>
-      {{ sth.publisher }}<br>
-      {{ sth.language }}<br>
-      {{ sth.publicationType }}<br>
+      citation:&emsp;{{ sth.citation }}<br>
+      collections:&emsp;{{ sth.collections }}<br>
+      publishDate:&emsp;{{ sth.publishDate }}<br>
+      submitDate:&emsp;{{ sth.submitDate }}<br>
+      publisher:&emsp;{{ sth.publisher }}<br>
+      language:&emsp;{{ sth.language }}<br>
+      publicationType:&emsp;{{ sth.publicationType }}<br>
       <br>
-      id:&emsp;{{ sth2.id }}<br>
-      email:&emsp;{{ sth2.email }}<br>
     </p>
     <h3>People</h3>
     <ul>
