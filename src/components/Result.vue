@@ -76,7 +76,8 @@ export default {
       })
     },
     jumpToPeople: function (ID) {
-      this.$router.push({ name: 'People', query: { userID: ID } })
+      alert(ID)
+      this.$router.push({ name: 'People', query: { peopleID: ID } })
     },
     jumpToPublication: function (ID) {
       this.$router.push({ name: 'Publication', query: { publicationID: ID } })
