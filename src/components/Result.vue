@@ -11,9 +11,15 @@
     <div>
       <li v-for="publication in publicationlist" :key="publication">
         <p><button v-on:click="jumpToPublication(publication.id)">{{publication.mainTitle}}</button></p>
-      <p><span>Authors : </span><span v-for="author in publication.authorsIds" :key="author">{{author}}, </span></p>
+      <p><span>Authors : </span><span v-for="author in publication.authors" :key="author">{{author.fullname}}, </span></p>
       <p><span>Abstract : </span>{{publication.abstractContent}}</p>
       </li>
+    </div>
+    <div>
+      *******************************************
+    </div>
+    <div>
+<button v-on:click="jumpToLastPage">last page</button><button v-on:click="jumpToNextPage">next page</button>
     </div>
   </div>
 </template>
@@ -36,11 +42,11 @@ export default {
       }
     },
     getAllResults: function () {
-      this.url = 'http://35.247.68.0:8080/api/test/search/0/' + this.$route.query.searchtext
+      this.url = 'http://35.247.68.0:8080/api/test/search/' + this.page + '/' + this.$route.query.searchtext
       axios.get(this.url).then(
         response => {
-          // this.peoplelist = response.data.data.people
-          // this.publicationlist = response.data.data.publication
+          this.peoplelist = response.data.data.people
+          this.publicationlist = response.data.data.publication
           console.log(response)
         }
       ).catch(error => {
@@ -48,20 +54,22 @@ export default {
       })
     },
     getPeopleResults: function () {
-      this.url = 'http://35.247.68.0:8080/api/test/search/people/0/' + this.$route.query.searchtext
+      this.url = 'http://35.247.68.0:8080/api/test/search/people/' + this.page + '/' + this.$route.query.searchtext
       axios.get(this.url).then(
         response => {
           this.peoplelist = response.data.data
+          console.log(response.data)
         }
       ).catch(error => {
         console.log(error)
       })
     },
     getPublicationResults: function () {
-      this.url = 'http://35.247.68.0:8080/api/test/search/publication/0/' + this.$route.query.searchtext
+      this.url = 'http://35.247.68.0:8080/api/test/search/publication/' + this.page + '/' + this.$route.query.searchtext
       axios.get(this.url).then(
         response => {
           this.publicationlist = response.data.data
+          console.log(response.data)
         }
       ).catch(error => {
         console.log(error)
@@ -72,11 +80,20 @@ export default {
     },
     jumpToPublication: function (ID) {
       this.$router.push({ name: 'Publication', query: { publicationID: ID } })
+    },
+    jumpToLastPage: function (page) {
+      this.page = this.page - 1
+      this.getResults()
+    },
+    jumpToNextPage: function (page) {
+      this.page = this.page + 1
+      this.getResults()
     }
   },
   data () {
     return {
       url: '',
+      page: 0,
       peoplelist: [{
         'career': [
           'string'
@@ -84,7 +101,7 @@ export default {
         'email': '',
         'firstname': '',
         'fullname': '',
-        'id': '670',
+        'id': '',
         'imageLargeUrl': '',
         'imageMediumUrl': '',
         'imageSmailUrl': '',

@@ -37,7 +37,7 @@
 import axios from 'axios'
 
 export default {
-  name: 'HelloWorld',
+  name: 'About',
   props: {
     msg: String
   },
@@ -48,7 +48,7 @@ export default {
     }
   },
   mounted () {
-    axios.get('http://35.247.68.0:8080/api/test/publication/default')
+    axios.get('http://35.247.68.0:8080/api/test/publication/' + this.$route.query.userID)
       .then((response) => {
       // handle success
         console.log(response.data)
