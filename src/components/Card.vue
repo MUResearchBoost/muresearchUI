@@ -1,7 +1,7 @@
 <template>
 <div class="card">
   <div class="card__side card__side--front">
-    <div class="card__picture card__picture--1">&nbsp;</div>
+    <!-- <div class="card__picture card__picture--1">&nbsp;</div> -->
     <div class="card__heading">
       <span class="card__heading-span">{{title}}</span>
     </div>
@@ -11,7 +11,6 @@
         </a>
     </div>
     <div class="card__Abstract">
-    <p>a</p>
     <p class="card__Abstract-text">{{abstract}}</p>
     </div>
     <a href="#popup" class="btn btn--white">Check detail</a>
@@ -42,6 +41,11 @@
     left: 0;
     text-align: left;
 }
+.card__Abstract p{
+    font-size: 1.5rem;
+    left: 3rem;
+    position: absolute;
+}
 
 .card__Abstract-title{
     left: 0;
@@ -61,7 +65,7 @@
     height: 40rem;
     -webkit-transition: all .8s ease;
     transition: all .8s ease;
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
     width: 100%;
@@ -86,7 +90,6 @@
 }
 
 .card__heading-span {
-    padding: 1rem 1.5rem;
     -webkit-box-decoration-break: clone;
     box-decoration-break: clone
 }
@@ -96,7 +99,7 @@
     color: #006621;
     position: relative;
     top: 0rem;
-    left: 3rem;
+    left: 2rem;
 }
 
 .card__authors a{
