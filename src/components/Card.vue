@@ -3,16 +3,16 @@
   <div class="card__side card__side--front">
     <!-- <div class="card__picture card__picture--1">&nbsp;</div> -->
     <div class="card__heading">
-      <span class="card__heading-span">{{title}}</span>
+      <span class="card__heading-span">{{post.mainTitle}}</span>
     </div>
     <div class="card__authors">
-        <a v-for="author in authors" :key=author.name :href=author.url>
-            {{author.name}}
+        <a v-for="author in post.authors" :key=author>
+            {{author}}
         </a>
     </div>
     <br/>
     <div class="card__Abstract">
-    <p class="card__Abstract-text">{{abstract}}</p>
+    <p class="card__Abstract-text">{{post.abstractContent}}</p>
     </div>
     <a href="#popup" class="cardbtn cardbtn--green">Check detail</a>
 
@@ -94,7 +94,6 @@
     animation-fill-mode: backwards
 }
 
-
 .card__cta {
     margin-top: 5rem;
     text-align: left;
@@ -125,7 +124,8 @@
     perspective: 300rem;
     -moz-perspective: 300rem;
     position: static;
-    height: 40rem
+    height: 40rem;
+    margin-top: 3rem;
 }
 
 .card__side {
@@ -230,6 +230,6 @@ only screen and (hover: none) {
 <script>
 export default {
   name: 'Card',
-  props: ['title', 'authors', 'abstract']
+  props: ['post']
 }
 </script>

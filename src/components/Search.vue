@@ -1,6 +1,16 @@
 <template>
-  <div>
-    <form action="#" class="form">
+  <header class="header">
+    <div class="header__logo-box">
+      <img src="../img/logo-white.png" alt="Logo" class="header__logo">
+    </div>
+
+    <div class="header__text-box">
+      <h1 class="heading-primary">
+        <span class="heading-primary--main">Muresearch Boost</span>
+        <span class="heading-primary--sub">is where knowledge be found</span>
+      </h1>
+      <div>
+    <form class="form">
       <div class="form__group">
         <input  v-model="searchtext" type="text" class="form__input" placeholder="Search Text" id="name" required>
         <label for="name" class="form__label">Search Text</label>
@@ -25,26 +35,30 @@
       </div>
 
       <div class="form__group">
-        <button class="btn btn--white btn--animated" v-on:click="sendForm">Discover &rarr;</button>
+        <div class="btn btn--white btn--animated" v-on:click="sendForm">Discover &rarr;</div>
       </div>
     </form>
   </div>
+    </div>
+
+  </header>
 </template>
 
 <script>
 export default {
   name: 'Search',
   methods: {
-    sendForm: function() {
+    sendForm: function () {
       if (this.peoplecheck === true && this.publicationcheck === false) {
-        this.searchrange = 'people';
+        this.searchrange = 'people'
       } else if (this.peoplecheck === false && this.publicationcheck === true) {
-        this.searchrange = 'publication';
+        this.searchrange = 'publication'
       }
-      this.$router.push({
-        name: 'Result',
-        query: { searchtext: this.searchtext, searchrange: this.searchrange }
+      this.$store.dispatch('setSearchObject', {
+        searchtext: this.searchtext,
+        searchrange: this.searchrange
       })
+      this.$emit('send-searchtext')
     }
   },
   data () {
