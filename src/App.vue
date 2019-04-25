@@ -299,6 +299,10 @@
 <script>
 import Card from './components/Card.vue'
 import Search from './components/Search.vue'
+import main from './net/unit'
+
+main();
+
 export default {
   name: 'App',
   components: {
