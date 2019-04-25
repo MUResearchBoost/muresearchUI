@@ -74,6 +74,10 @@
 <script>
 import Search from './components/Search.vue'
 import Result from './components/Result.vue'
+import main from './net/unit'
+
+main();
+
 export default {
   name: 'App',
   components: {
