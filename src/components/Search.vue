@@ -35,11 +35,11 @@
 export default {
   name: 'Search',
   methods: {
-    sendForm: function() {
+    sendForm: function () {
       if (this.peoplecheck === true && this.publicationcheck === false) {
-        this.searchrange = 'people';
+        this.searchrange = 'people'
       } else if (this.peoplecheck === false && this.publicationcheck === true) {
-        this.searchrange = 'publication';
+        this.searchrange = 'publication'
       }
       this.$router.push({
         name: 'Result',
