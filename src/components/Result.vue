@@ -20,18 +20,6 @@
 
 <script>
 import axios from 'axios'
-<<<<<<< HEAD
-export default {
-  name: 'Result',
-  mounted () {
-    this.getResults()
-  },
-  methods: {
-    getResults: function () {
-      if (this.$route.query.searchrange === '') {
-        this.getAllResults()
-      } else if (this.$route.query.searchrange === 'people') {
-=======
 import Card from './Card.vue'
 // import People from './People.vue'
 export default {
@@ -56,7 +44,6 @@ export default {
       if (this.$store.getters.searchObj.searchrange === '') {
         this.getAllResults()
       } else if (this.$store.getters.searchObj.searchrange === 'people') {
->>>>>>> 7128eeab1335a2654f3526f7e6ce412636cf85fe
         this.getPeopleResults()
       } else {
         this.getPublicationResults()
@@ -67,11 +54,7 @@ export default {
         'http://35.247.68.0:8080/api/test/search/' +
         this.page +
         '/' +
-<<<<<<< HEAD
-        this.$route.query.searchtext
-=======
         this.$store.getters.searchObj.searchtext
->>>>>>> 7128eeab1335a2654f3526f7e6ce412636cf85fe
       axios
         .get(this.url)
         .then(response => {
@@ -88,11 +71,7 @@ export default {
         'http://35.247.68.0:8080/api/test/search/people/' +
         this.page +
         '/' +
-<<<<<<< HEAD
-        this.$route.query.searchtext
-=======
         this.$store.getters.searchObj.searchtext
->>>>>>> 7128eeab1335a2654f3526f7e6ce412636cf85fe
       axios
         .get(this.url)
         .then(response => {
@@ -108,11 +87,7 @@ export default {
         'http://35.247.68.0:8080/api/test/search/publication/' +
         this.page +
         '/' +
-<<<<<<< HEAD
-        this.$route.query.searchtext
-=======
         this.$store.getters.searchObj.searchtext
->>>>>>> 7128eeab1335a2654f3526f7e6ce412636cf85fe
       axios
         .get(this.url)
         .then(response => {
@@ -122,24 +97,6 @@ export default {
         .catch(error => {
           console.log(error)
         })
-<<<<<<< HEAD
-    },
-    jumpToPeople: function (ID) {
-      alert(ID)
-      this.$router.push({ name: 'People', query: { peopleID: ID } })
-    },
-    jumpToPublication: function (ID) {
-      this.$router.push({ name: 'Publication', query: { publicationID: ID } })
-    },
-    jumpToLastPage: function (page) {
-      this.page = this.page - 1
-      this.getResults()
-    },
-    jumpToNextPage: function (page) {
-      this.page = this.page + 1
-      this.getResults()
-=======
->>>>>>> 7128eeab1335a2654f3526f7e6ce412636cf85fe
     }
     // ,
     // jumpToPeople: function(ID) {
@@ -163,52 +120,6 @@ export default {
       url: '',
       page: 0,
       peoplelist: [
-<<<<<<< HEAD
-        {
-          career: ['string'],
-          email: '',
-          firstname: '',
-          fullname: '',
-          id: '',
-          imageLargeUrl: '',
-          imageMediumUrl: '',
-          imageSmailUrl: '',
-          imageUrl: '',
-          information: '',
-          isUser: true,
-          lastname: '',
-          organization: [''],
-          phonenumber: '',
-          userId: ''
-        }
-      ],
-
-      publicationlist: [
-        {
-          id: '',
-          otherId: {
-            MOSPACE: '',
-            WIKI: '',
-            IEEE: ''
-          },
-          mainTitle: 'Main',
-          subTitle: '',
-          abstractContent: 'Abstract',
-          content: '',
-          contentFileIds: [''],
-          references: ['', ''],
-          originUrl: '',
-          citation: [''],
-          collections: [''],
-          authorsIds: ['10'],
-          publishDate: '',
-          submitDate: '',
-          publisher: [''],
-          subjectIds: [''],
-          language: '',
-          publicationType: ''
-        }
-=======
         // {
         //   career: ['string'],
         //   email: '',
@@ -253,7 +164,6 @@ export default {
         //   language: '',
         //   publicationType: ''
         // }
->>>>>>> 7128eeab1335a2654f3526f7e6ce412636cf85fe
       ]
     }
   }

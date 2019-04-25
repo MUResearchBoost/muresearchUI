@@ -32,138 +32,138 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from 'axios'
 export default {
-  name: "Result",
-  mounted() {
-    this.getResults();
+  name: 'Result',
+  mounted () {
+    this.getResults()
   },
   methods: {
-    getResults: function() {
-      if (this.$route.query.searchrange === "") {
-        this.getAllResults();
-      } else if (this.$route.query.searchrange === "people") {
-        this.getPeopleResults();
+    getResults: function () {
+      if (this.$route.query.searchrange === '') {
+        this.getAllResults()
+      } else if (this.$route.query.searchrange === 'people') {
+        this.getPeopleResults()
       } else {
-        this.getPublicationResults();
+        this.getPublicationResults()
       }
     },
-    getAllResults: function() {
+    getAllResults: function () {
       this.url =
-        "http://35.247.68.0:8080/api/test/search/" +
+        'http://35.247.68.0:8080/api/test/search/' +
         this.page +
-        "/" +
-        this.$route.query.searchtext;
+        '/' +
+        this.$route.query.searchtext
       axios
         .get(this.url)
         .then(response => {
-          this.peoplelist = response.data.data.people;
-          this.publicationlist = response.data.data.publication;
-          console.log(response);
+          this.peoplelist = response.data.data.people
+          this.publicationlist = response.data.data.publication
+          console.log(response)
         })
         .catch(error => {
-          console.log(error);
-        });
+          console.log(error)
+        })
     },
-    getPeopleResults: function() {
+    getPeopleResults: function () {
       this.url =
-        "http://35.247.68.0:8080/api/test/search/people/" +
+        'http://35.247.68.0:8080/api/test/search/people/' +
         this.page +
-        "/" +
-        this.$route.query.searchtext;
+        '/' +
+        this.$route.query.searchtext
       axios
         .get(this.url)
         .then(response => {
-          this.peoplelist = response.data.data;
-          console.log(response.data);
+          this.peoplelist = response.data.data
+          console.log(response.data)
         })
         .catch(error => {
-          console.log(error);
-        });
+          console.log(error)
+        })
     },
-    getPublicationResults: function() {
+    getPublicationResults: function () {
       this.url =
-        "http://35.247.68.0:8080/api/test/search/publication/" +
+        'http://35.247.68.0:8080/api/test/search/publication/' +
         this.page +
-        "/" +
-        this.$route.query.searchtext;
+        '/' +
+        this.$route.query.searchtext
       axios
         .get(this.url)
         .then(response => {
-          this.publicationlist = response.data.data;
-          console.log(response.data);
+          this.publicationlist = response.data.data
+          console.log(response.data)
         })
         .catch(error => {
-          console.log(error);
-        });
+          console.log(error)
+        })
     },
-    jumpToPeople: function(ID) {
-      alert(ID);
-      this.$router.push({ name: "People", query: { peopleID: ID } });
+    jumpToPeople: function (ID) {
+      alert(ID)
+      this.$router.push({ name: 'People', query: { peopleID: ID } })
     },
-    jumpToPublication: function(ID) {
-      this.$router.push({ name: "Publication", query: { publicationID: ID } });
+    jumpToPublication: function (ID) {
+      this.$router.push({ name: 'Publication', query: { publicationID: ID } })
     },
-    jumpToLastPage: function(page) {
-      this.page = this.page - 1;
-      this.getResults();
+    jumpToLastPage: function (page) {
+      this.page = this.page - 1
+      this.getResults()
     },
-    jumpToNextPage: function(page) {
-      this.page = this.page + 1;
-      this.getResults();
+    jumpToNextPage: function (page) {
+      this.page = this.page + 1
+      this.getResults()
     }
   },
-  data() {
+  data () {
     return {
-      url: "",
+      url: '',
       page: 0,
       peoplelist: [
         {
-          career: ["string"],
-          email: "",
-          firstname: "",
-          fullname: "",
-          id: "",
-          imageLargeUrl: "",
-          imageMediumUrl: "",
-          imageSmailUrl: "",
-          imageUrl: "",
-          information: "",
+          career: ['string'],
+          email: '',
+          firstname: '',
+          fullname: '',
+          id: '',
+          imageLargeUrl: '',
+          imageMediumUrl: '',
+          imageSmailUrl: '',
+          imageUrl: '',
+          information: '',
           isUser: true,
-          lastname: "",
-          organization: [""],
-          phonenumber: "",
-          userId: ""
+          lastname: '',
+          organization: [''],
+          phonenumber: '',
+          userId: ''
         }
       ],
 
       publicationlist: [
         {
-          id: "",
+          id: '',
           otherId: {
-            MOSPACE: "",
-            WIKI: "",
-            IEEE: ""
+            MOSPACE: '',
+            WIKI: '',
+            IEEE: ''
           },
-          mainTitle: "Main",
-          subTitle: "",
-          abstractContent: "Abstract",
-          content: "",
-          contentFileIds: [""],
-          references: ["", ""],
-          originUrl: "",
-          citation: [""],
-          collections: [""],
-          authorsIds: ["10"],
-          publishDate: "",
-          submitDate: "",
-          publisher: [""],
-          subjectIds: [""],
-          language: "",
-          publicationType: ""
+          mainTitle: 'Main',
+          subTitle: '',
+          abstractContent: 'Abstract',
+          content: '',
+          contentFileIds: [''],
+          references: ['', ''],
+          originUrl: '',
+          citation: [''],
+          collections: [''],
+          authorsIds: ['10'],
+          publishDate: '',
+          submitDate: '',
+          publisher: [''],
+          subjectIds: [''],
+          language: '',
+          publicationType: ''
         }
       ]
-    };
+    }
   }
-};
+}
 </script>
