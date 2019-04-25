@@ -14,7 +14,7 @@
     <div class="card__Abstract">
     <p class="card__Abstract-text">{{post.abstractContent}}</p>
     </div>
-    <a href="#popup" class="cardbtn cardbtn--green">Check detail</a>
+    <a class="cardbtn cardbtn--green">Check detail</a>
 
   </div>
   <!-- <div class="card__side card__side--back card__side--back-1">
@@ -124,12 +124,12 @@
     perspective: 300rem;
     -moz-perspective: 300rem;
     position: static;
-    height: 40rem;
+    height: auto;
     margin-top: 3rem;
 }
 
 .card__side {
-    height: 40rem;
+    height: auto;
     -webkit-transition: all .8s ease;
     transition: all .8s ease;
     position: relative;

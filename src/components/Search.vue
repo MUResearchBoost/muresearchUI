@@ -7,13 +7,12 @@
     <div class="header__text-box">
       <h1 class="heading-primary">
         <span class="heading-primary--main">Muresearch Boost</span>
-        <span class="heading-primary--sub">is where knowledge be found</span>
+        <span class="heading-primary--sub">better search</span>
       </h1>
       <div>
     <form class="form">
       <div class="form__group">
-        <input  v-model="searchtext" type="text" class="form__input" placeholder="Search Text" id="name" required>
-        <label for="name" class="form__label">Search Text</label>
+        <input  v-model="searchtext" type="text" class="form__input"  onkeydown="if(event.keyCode==13)return false;" @keyup.enter="sendForm" placeholder="Search Text" id="name" required>
       </div>
 
       <div class="form__group u-margin-bottom-medium">

@@ -1,23 +1,43 @@
 <template>
   <div>
-      <div v-for="publication in publicationlist" :key="publication">
-        <Card
-          v-bind:post="publication"
-        ></Card>
-      </div>
+    <div v-if="getPeoAmount">
+      <ul>
+        <li v-for="people in peoplelist" :key="people.id">
+          {{people.firstName}}
+        </li>
+      </ul>
+    </div>
+    <div v-if="getPubAmount">
+        <div v-for="publication in publicationlist" :key="publication.id">
+          <Card
+            v-bind:post="publication"
+          ></Card>
+        </div>
+    </div>
+    <!-- <People></People> -->
   </div>
 </template>
 
 <script>
 import axios from 'axios'
 import Card from './Card.vue'
+// import People from './People.vue'
 export default {
   name: 'Result',
   components: {
+    // People,
     Card
   },
   mounted () {
     this.getResults()
+  },
+  computed: {
+    getPubAmount () {
+      return this.publicationlist.length
+    },
+    getPeoAmount () {
+      return this.peoplelist.length
+    }
   },
   methods: {
     getResults: function () {
@@ -100,50 +120,50 @@ export default {
       url: '',
       page: 0,
       peoplelist: [
-        {
-          career: ['string'],
-          email: '',
-          firstname: '',
-          fullname: '',
-          id: '',
-          imageLargeUrl: '',
-          imageMediumUrl: '',
-          imageSmailUrl: '',
-          imageUrl: '',
-          information: '',
-          isUser: true,
-          lastname: '',
-          organization: [''],
-          phonenumber: '',
-          userId: ''
-        }
+        // {
+        //   career: ['string'],
+        //   email: '',
+        //   firstname: '',
+        //   fullname: '',
+        //   id: '',
+        //   imageLargeUrl: '',
+        //   imageMediumUrl: '',
+        //   imageSmailUrl: '',
+        //   imageUrl: '',
+        //   information: '',
+        //   isUser: true,
+        //   lastname: '',
+        //   organization: [''],
+        //   phonenumber: '',
+        //   userId: ''
+        // }
       ],
 
       publicationlist: [
-        {
-          id: '',
-          otherId: {
-            MOSPACE: '',
-            WIKI: '',
-            IEEE: ''
-          },
-          mainTitle: 'Main',
-          subTitle: '',
-          abstractContent: 'Abstract',
-          content: '',
-          contentFileIds: [''],
-          references: ['', ''],
-          originUrl: '',
-          citation: [''],
-          collections: [''],
-          authorsIds: ['10'],
-          publishDate: '',
-          submitDate: '',
-          publisher: [''],
-          subjectIds: [''],
-          language: '',
-          publicationType: ''
-        }
+        // {
+        //   id: '',
+        //   otherId: {
+        //     MOSPACE: '',
+        //     WIKI: '',
+        //     IEEE: ''
+        //   },
+        //   mainTitle: 'Main',
+        //   subTitle: '',
+        //   abstractContent: 'Abstract',
+        //   content: '',
+        //   contentFileIds: [''],
+        //   references: ['', ''],
+        //   originUrl: '',
+        //   citation: [''],
+        //   collections: [''],
+        //   authorsIds: ['10'],
+        //   publishDate: '',
+        //   submitDate: '',
+        //   publisher: [''],
+        //   subjectIds: [''],
+        //   language: '',
+        //   publicationType: ''
+        // }
       ]
     }
   }
