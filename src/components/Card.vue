@@ -3,17 +3,18 @@
   <div class="card__side card__side--front">
     <!-- <div class="card__picture card__picture--1">&nbsp;</div> -->
     <div class="card__heading">
-      <span class="card__heading-span">{{title}}</span>
+      <span class="card__heading-span">{{post.mainTitle}}</span>
     </div>
     <div class="card__authors">
-        <a v-for="author in authors" :key=author.name :href=author.url>
-            {{author.name}}
+        <a v-for="author in post.authors" :key=author>
+            {{author}}
         </a>
     </div>
+    <br/>
     <div class="card__Abstract">
-    <p class="card__Abstract-text">{{abstract}}</p>
+    <p class="card__Abstract-text">{{post.abstractContent}}</p>
     </div>
-    <a href="#popup" class="btn btn--white">Check detail</a>
+    <a class="cardbtn cardbtn--green">Check detail</a>
 
   </div>
   <!-- <div class="card__side card__side--back card__side--back-1">
@@ -29,6 +30,69 @@
 </template>
 
 <style>
+.cardbtn,
+.cardbtn:link,
+.cardbtn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    display: inline-block;
+    border-radius: 3rem;
+    -webkit-transition: all .2s;
+    transition: all .2s;
+    position: relative;
+    font-size: 1.3rem;
+    border: none;
+    cursor: pointer;
+    margin-top: 2rem;
+    margin-left: 2rem;
+}
+
+.cardbtn:hover {
+    -webkit-transform: translateY(-3px);
+    transform: translateY(-3px);
+    -webkit-box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2)
+}
+
+.cardbtn:active,
+.cardbtn:focus {
+    outline: none;
+    -webkit-transform: translateY(-1px);
+    transform: translateY(-1px);
+    -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2)
+}
+
+.cardbtn--green {
+    background-color: #fff;
+    color: #55c57a
+}
+
+.cardbtn--green::after {
+    background-color: #fff
+}
+
+.cardbtn::after{
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    -webkit-transition: all .4s;
+    transition: all .4s
+}
+
+.cardbtn--animated {
+    -webkit-animation: moveInBottom .5s ease-out .75s;
+    animation: moveInBottom .5s ease-out .75s;
+    -webkit-animation-fill-mode: backwards;
+    animation-fill-mode: backwards
+}
 
 .card__cta {
     margin-top: 5rem;
@@ -36,15 +100,17 @@
 }
 
 .card__Abstract{
-    position: relative;
-    top: 5rem;
+    position: static;
+    margin-top: 4rem;
     left: 0;
     text-align: left;
+    width: 95%;
 }
+
 .card__Abstract p{
     font-size: 1.5rem;
     left: 3rem;
-    position: absolute;
+    position: relative;
 }
 
 .card__Abstract-title{
@@ -57,12 +123,13 @@
     -webkit-perspective: 300rem;
     perspective: 300rem;
     -moz-perspective: 300rem;
-    position: relative;
-    height: 40rem
+    position: static;
+    height: auto;
+    margin-top: 3rem;
 }
 
 .card__side {
-    height: 40rem;
+    height: auto;
     -webkit-transition: all .8s ease;
     transition: all .8s ease;
     position: relative;
@@ -83,9 +150,9 @@
     /* text-transform: uppercase; */
     text-align: left;
     color: #28b485;
-    position: relative;
-    top: 2rem;
-    left: 2rem;
+    position: static;
+    margin-top: 1em;
+    margin-left: 1em;
     width: 75%
 }
 
@@ -95,16 +162,17 @@
 }
 
 .card__authors{
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     color: #006621;
-    position: relative;
-    top: 0rem;
-    left: 2rem;
+    position: static;
+    margin-left: 1.5rem;
+
 }
 
 .card__authors a{
     float: left;
-    margin: 1em;
+    padding: 0;
+    margin: 0 1rem 0 1rem;
 }
 
 .card__side--front {
@@ -162,6 +230,6 @@ only screen and (hover: none) {
 <script>
 export default {
   name: 'Card',
-  props: ['title', 'authors', 'abstract']
+  props: ['post']
 }
 </script>
