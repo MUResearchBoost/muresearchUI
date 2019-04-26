@@ -1,12 +1,12 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-unused-vars */
+/* global it */
+/* global describe */
+/* global beforeEach */
 import { expect } from 'chai'
-import 'mocha'
-import { inspect } from 'util'
 import * as Spring from '@/net/spring'
 import People from '@/model/People'
 import Publication from '@/model/Publication'
-import Scope from '@/model/Scope'
 import SearchState from '@/model/SearchState'
 import User from '@/model/User'
 

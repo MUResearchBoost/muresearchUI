@@ -5,7 +5,7 @@ export const proxyIp = '35.247.68.0'
 export const springPrefix = 'be'
 export const springApiVersion = 'api/test'
 export const algoPrefix = 'algo'
-export const alogoApiVersion = ''
+export const algoApiVersion = ''
 
 export function springBaseUrl () {
   return `${httpSchema}://${proxyIp}/${springPrefix}/${springApiVersion}/`

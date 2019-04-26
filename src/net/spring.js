@@ -13,7 +13,7 @@ export function searchBySearchState (searchState, page = 0) {
 }
 
 export function searchByRawText (rawText, page = 0) {
-  return axios.get(`${springBaseUrl()}search/${page}/${rawText}`).then(res => res.data)
+  return axios.get(`${springBaseUrl()}search/${page}/${rawText}`)
     .then(res => res.data)
     .catch(err => {
       console.log(err)
@@ -22,7 +22,7 @@ export function searchByRawText (rawText, page = 0) {
 }
 
 export function searchPeopleBySearchState (searchState, page = 0) {
-  return axios.post(`${springBaseUrl()}search/people/${page}`, searchState).then(res => res.data)
+  return axios.post(`${springBaseUrl()}search/people/${page}`, searchState)
     .then(res => res.data)
     .catch(err => {
       console.log(err)
@@ -31,7 +31,7 @@ export function searchPeopleBySearchState (searchState, page = 0) {
 }
 
 export function searchPeopleByRawText (rawText, page = 0) {
-  return axios.get(`${springBaseUrl()}search/people/${page}/${rawText}`).then(res => res.data)
+  return axios.get(`${springBaseUrl()}search/people/${page}/${rawText}`)
     .then(res => res.data)
     .catch(err => {
       console.log(err)
