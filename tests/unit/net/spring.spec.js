@@ -116,3 +116,10 @@ describe.skip('About Auto-Complete', () => {
 
   })
 })
+
+describe.skip('About PeopleNameToPublications', () => {
+  it('getPublicationsByPeopleName', async () => {
+    const res = await Spring.getPublicationsByPeopleName('')
+    expect(res).to.be.not.null
+  })
+})

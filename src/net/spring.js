@@ -177,3 +177,12 @@ export function getAutoCompletePublication (query) {
       throw err
     })
 }
+
+export function getPublicationsByPeopleName (name) {
+  return axios.get(`${springBaseUrl()}peoplenametopublication/name/${name}`)
+    .then(res => res.data)
+    .catch(err => {
+      console.log(err)
+      throw err
+    })
+}
