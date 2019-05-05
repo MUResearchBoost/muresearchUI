@@ -103,6 +103,11 @@ describe.skip('About People', () => {
     const res = await Spring.getPeopleById(0)
     expect(res).to.be.not.null
   })
+
+  it('getPeopleByName', async () => {
+    const res = await Spring.getPeopleByName('')
+    expect(res).to.be.not.null
+  })
 })
 
 describe.skip('About Auth', () => {

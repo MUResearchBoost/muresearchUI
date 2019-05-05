@@ -129,6 +129,15 @@ export function getPeopleById (id) {
     })
 }
 
+export function getPeopleByName (name) {
+  return axios.get(`${springBaseUrl()}people/name/${name}`)
+    .then(res => res.data)
+    .catch(err => {
+      console.log(err)
+      throw err
+    })
+}
+
 /* About Auth */
 
 export function login (user) {
