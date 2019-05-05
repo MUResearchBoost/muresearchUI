@@ -14,7 +14,7 @@
     <div class="card__Abstract">
     <p class="card__Abstract-text">{{post.abstractContent}}</p>
     </div>
-    <a class="cardbtn cardbtn--green">Check detail</a>
+    <a v-on:click="openModal(post)" class="cardbtn cardbtn--green">Check detail</a>
 
   </div>
   <!-- <div class="card__side card__side--back card__side--back-1">
@@ -230,6 +230,12 @@ only screen and (hover: none) {
 <script>
 export default {
   name: 'Card',
-  props: ['post']
+  props: ['post'],
+  methods: {
+    openModal: function (obj) {
+      this.$store.dispatch('setModalPublication', obj)
+      this.$store.dispatch('setModalShow', true)
+    }
+  }
 }
 </script>

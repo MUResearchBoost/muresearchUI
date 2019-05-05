@@ -46,6 +46,7 @@
     >
     </Search>
     <Result v-if="this.$store.getters.hasVal"></Result>
+    <Modal></Modal>
   </div>
 </template>
 
@@ -74,12 +75,14 @@
 <script>
 import Search from './components/Search.vue'
 import Result from './components/Result.vue'
+import Modal from './components/Modal.vue'
 
 export default {
   name: 'App',
   components: {
     Search,
-    Result
+    Result,
+    Modal
   },
   methods: {
     goResult: function () {

@@ -51,7 +51,7 @@ export default {
     },
     getAllResults: function () {
       this.url =
-        'http://35.247.68.0:8080/api/test/search/' +
+        'http://35.236.122.104:8080/api/test/search/' +
         this.page +
         '/' +
         this.$store.getters.searchObj.searchtext
@@ -68,7 +68,7 @@ export default {
     },
     getPeopleResults: function () {
       this.url =
-        'http://35.247.68.0:8080/api/test/search/people/' +
+        'http://35.236.122.104:8080/api/test/search/people/' +
         this.page +
         '/' +
         this.$store.getters.searchObj.searchtext
@@ -84,7 +84,7 @@ export default {
     },
     getPublicationResults: function () {
       this.url =
-        'http://35.247.68.0:8080/api/test/search/publication/' +
+        'http://35.236.122.104:8080/api/test/search/publication/' +
         this.page +
         '/' +
         this.$store.getters.searchObj.searchtext

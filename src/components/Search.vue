@@ -34,7 +34,7 @@
       </div>
 
       <div class="form__group">
-        <div class="btn btn--white btn--animated" v-on:click="sendForm">Discover &rarr;</div>
+        <div class="btn btn--white btn--animated" v-on:click.once="sendForm">Discover &rarr;</div>
       </div>
     </form>
   </div>
