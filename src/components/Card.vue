@@ -226,6 +226,7 @@ export default {
   methods: {
     openModal: function (obj) {
       this.$store.dispatch('addModalPublication', obj)
+      this.$store.dispatch('addReccomendation', [obj])
     }
   }
 }
