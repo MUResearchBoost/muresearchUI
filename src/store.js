@@ -1,13 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
+import axios from 'axios'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
     searchObject: {},
-    modalseen: false,
-    modalPublication: {}
+    modalPublication: [],
+    publicationSearchResults: []
   },
   getters: {
     searchObj: state => {
@@ -21,40 +21,51 @@ export default new Vuex.Store({
       }
     },
     getModalSeen: state => {
-      return state.modalseen
+      return (state.modalPublication.length !== 0)
     },
     getModalPublication: state => {
-      return state.modalPublication
+      if (state.modalPublication.length === 0) { return {} }
+      return state.modalPublication[state.modalPublication.length - 1]
+    },
+    getPublicationSearchResults: state => {
+      return state.publicationSearchResults
     }
   },
   mutations: {
     setSearchObject (state, searchObj) {
       state.searchObject = searchObj
     },
-    showModal (state) {
-      state.modalseen = true
+    addModalPublication (state, pub) {
+      state.modalPublication.push(pub)
     },
-    closeModal (state) {
-      state.modalseen = false
+    rmModalPublication (state) {
+      state.modalPublication.pop()
     },
-    setModalPublication (state, pub) {
-      state.modalPublication = pub
+    setSearchResult (state, results) {
+      state.publicationSearchResults = results
     }
   },
   actions: {
     setSearchObject (context, searchObj) {
       context.commit('setSearchObject', searchObj)
     },
-    setModalShow (context, showstate) {
-      if (showstate) {
-        context.commit('showModal')
-      } else {
-        context.commit('closeModal')
-        context.commit('setModalPublication', {})
-      }
+    addModalPublication (context, pub) {
+      context.commit('addModalPublication', pub)
     },
-    setModalPublication (context, pub) {
-      context.commit('setModalPublication', pub)
+    rmModalPublication (context) {
+      context.commit('rmModalPublication')
+    },
+    async goSearch (context, page) {
+      var url = 'http://35.236.122.104:8080/api/test/search/publication/' + page + '/' + context.state.searchObject.searchtext
+      await axios
+        .get(url)
+        .then(response => {
+          context.commit('setSearchResult', response.data.data)
+          console.log(response.data)
+        })
+        .catch(error => {
+          console.log(error)
+        })
     }
   }
 })

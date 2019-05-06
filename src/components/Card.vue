@@ -2,12 +2,12 @@
 <div class="card">
   <div class="card__side card__side--front">
     <!-- <div class="card__picture card__picture--1">&nbsp;</div> -->
-    <div class="card__heading">
+    <div class="card__heading" v-bind:style="{fontSize:inm+'rem'}">
       <span class="card__heading-span">{{post.mainTitle}}</span>
     </div>
-    <div class="card__authors">
-        <a v-for="author in post.authors" :key=author>
-            {{author}}
+    <div class="card__authors" v-bind:style="{fontSize:(inm-1.0)+'rem'}">
+        <a v-for="(author,index) in post.authors" :key=author>
+            {{author+ (index==post.authors.length-1?' ':', ')}}
         </a>
     </div>
     <br/>
@@ -15,17 +15,7 @@
     <p class="card__Abstract-text">{{post.abstractContent}}</p>
     </div>
     <a v-on:click="openModal(post)" class="cardbtn cardbtn--green">Check detail</a>
-
   </div>
-  <!-- <div class="card__side card__side--back card__side--back-1">
-    <div class="card__cta">
-      <div class="card__Abstract">
-        <p class="card__Abstract-title">{{title}}</p>
-        <p class="card__Abstract-text">{{abstract}}</p>
-      </div>
-      <a href="#popup" class="btn btn--white">Check detail</a>
-    </div>
-  </div> -->
 </div>
 </template>
 
@@ -101,7 +91,6 @@
 
 .card__Abstract{
     position: static;
-    margin-top: 4rem;
     left: 0;
     text-align: left;
     width: 95%;
@@ -111,6 +100,11 @@
     font-size: 1.5rem;
     left: 3rem;
     position: relative;
+    height: auto;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
 }
 
 .card__Abstract-title{
@@ -153,12 +147,11 @@
     position: static;
     margin-top: 1em;
     margin-left: 1em;
-    width: 75%
+    width: 95%
 }
 
 .card__heading-span {
-    -webkit-box-decoration-break: clone;
-    box-decoration-break: clone
+    width: 95%;
 }
 
 .card__authors{
@@ -170,7 +163,6 @@
 }
 
 .card__authors a{
-    float: left;
     padding: 0;
     margin: 0 1rem 0 1rem;
 }
@@ -230,11 +222,10 @@ only screen and (hover: none) {
 <script>
 export default {
   name: 'Card',
-  props: ['post'],
+  props: ['post', 'inm'],
   methods: {
     openModal: function (obj) {
-      this.$store.dispatch('setModalPublication', obj)
-      this.$store.dispatch('setModalShow', true)
+      this.$store.dispatch('addModalPublication', obj)
     }
   }
 }

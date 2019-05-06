@@ -8,8 +8,8 @@
         </div>
         <div class="modal-body">
           <div class="modal-author">
-            <a v-for="author in publication.authors" :key=author>
-              {{author}}
+            <a v-for="(author,index) in publication.authors" :key=author>
+              {{author+ (index==publication.authors.length-1?' ':', ')}}
             </a>
           </div>
           <div>
@@ -26,6 +26,7 @@
           <div v-for="publication1 in recommendationlist" :key="publication1.id">
             <Card
               v-bind:post="publication1"
+              v-bind:inm=2.3
             ></Card>
           </div>
         </div>
@@ -35,52 +36,63 @@
 </template>
 
 <style scoped>
-    .modal{
-        display: block;
-        position: fixed;
-        z-index: 1001;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgb(0,0,0);
-        background-color: rgba(0,0,0,0.6);
-    }
+  .modal{
+      display: block;
+      position: fixed;
+      z-index: 1001;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgb(0,0,0);
+      background-color: rgba(0,0,0,0.6);
+  }
+  p{
+    font-size: 1.5rem;
+  }
+  .modal-content {
+      background-color: #fefefe;
+      margin: 10% auto;
+      border: 1px solid #888;
+      width: 80%;
+      height: auto;
+  }
+  .modal-content-container {
+      padding: 2rem;
+  }
+  .modal-header {
+      padding: 2px 16px;
+      background-color: white;
+      font-size: 2.6rem;
+      color: #5cb85c;
+  }
+  .modal-body{
+      padding: 2px 16px;
+      font-size: 1.5rem;
+  }
+  .recommendation{
+    font-size: 1.5rem;
+    padding-left: 16px;
+  }
+  .modal-author{
+    color: #006621;
+    font-size: 1.6rem;
+  }
+  .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      line-height: 1;
+  }
 
-    .modal-content {
-        background-color: #fefefe;
-        margin: 10% auto;
-        border: 1px solid #888;
-        width: 80%;
-        height: auto;
-    }
-    .modal-content-container {
-        padding: 2rem;
-    }
-    .modal-header {
-        padding: 2px 16px;
-        background-color: white;
-        color: #5cb85c;
-    }
-    .modal-body{
-        padding: 2px 16px;
-        font-size: 14px;
-    }
-    .close {
-        color: #aaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-        line-height: 1;
-    }
-
-    .close:hover,
-    .close:focus {
-        color: black;
-        text-decoration: none;
-        cursor: pointer;
-    }
+  .close:hover,
+  .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+  }
 </style>
 
 <script>
@@ -122,7 +134,6 @@ export default {
   },
   data () {
     return {
-      testpulication: a,
       recommendationlist: [
         a, a, a
       ]
@@ -130,7 +141,7 @@ export default {
   },
   methods: {
     closeModal: function () {
-      this.$store.dispatch('setModalShow',false)
+      this.$store.dispatch('rmModalPublication')
     }
   }
 }

@@ -16,21 +16,20 @@
       </div>
 
       <div class="form__group u-margin-bottom-medium">
-        <div class="form__radio-group">
+        <!-- <div class="form__radio-group">
           <input type="checkbox" v-model="peoplecheck" class="form__radio-input" id="peoplecheck" name="peoplecheck">
           <label for="peoplecheck" class="form__radio-label">
             <span class="form__radio-button"></span>
             People
           </label>
-        </div>
-
-        <div class="form__radio-group">
+        </div> -->
+        <!-- <div class="form__radio-group">
           <input type="checkbox" v-model="publicationcheck" class="form__radio-input" id="publicationcheck" name="publicationcheck">
           <label for="publicationcheck" class="form__radio-label">
             <span class="form__radio-button"></span>
             Publication
           </label>
-        </div>
+        </div> -->
       </div>
 
       <div class="form__group">
@@ -48,14 +47,8 @@ export default {
   name: 'Search',
   methods: {
     sendForm: function () {
-      if (this.peoplecheck === true && this.publicationcheck === false) {
-        this.searchrange = 'people'
-      } else if (this.peoplecheck === false && this.publicationcheck === true) {
-        this.searchrange = 'publication'
-      }
       this.$store.dispatch('setSearchObject', {
-        searchtext: this.searchtext,
-        searchrange: this.searchrange
+        searchtext: this.searchtext
       })
       this.$emit('send-searchtext')
     }
