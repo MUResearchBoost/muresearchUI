@@ -7,7 +7,7 @@ services:
       - "443:443"
     volumes: 
       - "./nginx.conf:/etc/nginx/nginx.conf"
-      - "./dist:/var/dist"
+      - "./:/var/muresearch_ui"
     restart: always
     networks: 
       - frontend
