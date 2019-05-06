@@ -12,7 +12,7 @@
       <div>
     <form class="form">
       <div class="form__group">
-        <input  v-model="searchtext" type="text" class="form__input"  onkeydown="if(event.keyCode==13)return false;" @keyup.enter="sendForm" placeholder="Search Text" id="name" required>
+        <input  v-model="searchtext" type="text" class="form__input"  onkeydown="if(event.keyCode==13)return false;" v-on:keyup.enter="sendForm" placeholder="Search Text" id="name" required>
       </div>
 
       <div class="form__group u-margin-bottom-medium">

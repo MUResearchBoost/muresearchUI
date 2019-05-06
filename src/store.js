@@ -56,7 +56,7 @@ export default new Vuex.Store({
       context.commit('rmModalPublication')
     },
     async goSearch (context, page) {
-      var url = 'http://35.236.122.104:8080/api/test/search/publication/' + page + '/' + context.state.searchObject.searchtext
+      var url = 'http://34.73.129.81:8080/api/test/search/publication/' + page + '/' + context.state.searchObject.searchtext
       await axios
         .get(url)
         .then(response => {

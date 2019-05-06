@@ -57,6 +57,7 @@
       border: 1px solid #888;
       width: 80%;
       height: auto;
+      padding-bottom: 2rem;
   }
   .modal-content-container {
       padding: 2rem;
