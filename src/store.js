@@ -68,7 +68,7 @@ export default new Vuex.Store({
       context.commit('addModalPublication', pub)
     },
     async addReccomendation (context, list) {
-      var url = 'http://34.73.129.81:8000/algo/recommendPublication/'
+      var url = 'http://34.73.129.81:5000/recommendPublication/'
       await axios
         .post(url, list)
         .then(response => {
